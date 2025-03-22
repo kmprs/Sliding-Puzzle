@@ -14,4 +14,3 @@ For running the script please use the following command: `cabal run`
 
 > NOTE: in order for you to run the script you must have **cabal** and **ghc** installed!
 
-
