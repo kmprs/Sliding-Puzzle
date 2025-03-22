@@ -13,10 +13,10 @@ bfs start target
     searchLogic :: State -> Map.Map State State -> Seq.Seq State -> Set.Set State -> Maybe Path
     searchLogic final parents queue visited 
         | Seq.null queue = Nothing 
-        | final == current = Just (extractPath current parents [current]) -- target found
+        | final == current = Just (extractPath current parents) -- target found
         | otherwise =  
             let new_visited = Set.insert current visited  
-                new_states = filter (`Set.notMember` new_visited) $ exploreStates current [] directions  
+                new_states = removeVisited (exploreStates current [] directions) new_visited  
                 new_parents = addToParents current new_states parents
                 new_queue = rest Seq.>< Seq.fromList new_states
             in searchLogic final new_parents new_queue new_visited
@@ -28,11 +28,8 @@ insertToVisited :: [State] -> Set.Set State -> Set.Set State
 insertToVisited items set = foldr Set.insert set items 
 
 
-removeVisited :: [State] -> Set.Set State -> [State] -> [State]
-removeVisited [] _ not_visited = not_visited 
-removeVisited (current:others) visited not_visited
-    | Set.member current visited = removeVisited others visited not_visited 
-    | otherwise = removeVisited others visited (current:not_visited) 
+removeVisited :: [State] -> Set.Set State -> [State]
+removeVisited states visited = filter (`Set.notMember` visited) states
     
 
 addToParents :: State -> [State] -> Map.Map State State -> Map.Map State State
@@ -42,13 +39,13 @@ addToParents parent (child:children) parents = addToParents parent children new_
       new_parents = Map.insertWith (\_ old -> old) child parent parents
         
 
-extractPath :: State -> Map.Map State State -> Path -> Path 
-extractPath current parents current_path =
+extractPath :: Ord state => state -> Map.Map state state -> [state]
+extractPath current parents =
     case Map.lookup current parents of
         Just parent
-            | current == parent -> reverse current_path
-            | otherwise -> extractPath parent parents (parent : current_path)
-        Nothing -> current_path
+            | current == parent -> [current]
+            | otherwise -> extractPath parent parents ++ [current]
+        Nothing -> [current]
     
 
 exploreStates :: State -> [State] -> [Position] -> [State]
