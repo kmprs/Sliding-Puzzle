@@ -59,7 +59,7 @@ exploreStates state exploredStates (direction:rest) =
 
 moveTile :: State -> Position -> Maybe State
 moveTile state (dx, dy) = do
-    (row, col) <- findTile state 0 0 0
+    (row, col) <- findTile state 0 0
     let newRow = row + dx
     let newCol = col + dy
     if isValidMove state newRow newCol
@@ -79,12 +79,12 @@ swapTiles state (r1, c1) (r2, c2) =
         | otherwise = (state !! r) !! c
     
 
-findTile :: State -> Int -> Int -> Int -> Maybe (Int, Int)
-findTile [] _ _ _ = Nothing  
-findTile (row:rest) target rowIndex colIndex =
+findTile :: State -> Int -> Int -> Maybe (Int, Int)
+findTile [] _ _ = Nothing  
+findTile (row:rest) target rowIndex =
     case searchInRow target rowIndex 0 row of
         Just pos -> Just pos
-        Nothing  -> findTile rest target (rowIndex + 1) colIndex
+        Nothing  -> findTile rest target (rowIndex + 1)
         
         
 searchInRow :: Int -> Int -> Int -> Row  -> Maybe Position

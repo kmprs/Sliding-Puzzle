@@ -37,7 +37,8 @@ countInversions :: [Int] -> Int
 countInversions arr = length 
     [ (x, y) | (i, x) <- indexed, (j, y) <- indexed, i < j, x > y, x /= 0, y /= 0 ]
   where
-    indexed = zip [0..] arr
+    indexed :: [(Int, Int)]
+    indexed = zip [0 :: Int ..] arr
 
 
 flatten :: State -> [Int]
