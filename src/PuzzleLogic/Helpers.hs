@@ -31,6 +31,7 @@ isSolvable start target =
      (countInversions (flatten start)) `mod` 2 
      == (countInversions (flatten target)) `mod`2 
 
+
 -- An inversion is a pair (arr[i], arr[j]) where i < j, arr[i] > arr[j], 
 -- and both values are nonzero.
 countInversions :: [Int] -> Int
@@ -40,7 +41,8 @@ countInversions arr = length
     indexed :: [(Int, Int)]
     indexed = zip [0 :: Int ..] arr
 
-
+-- flattens a 2D array to a 1D array 
 flatten :: State -> [Int]
 flatten [] = []
 flatten (row:rest) = row ++ flatten rest 
+

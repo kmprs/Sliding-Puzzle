@@ -23,3 +23,4 @@ main = do
             -- putStrLn (Just "Puzzle is solveable.")
             printPath (bfs start target nextStates2D) 
         else putStrLn "Configuration is not solvable."
+
