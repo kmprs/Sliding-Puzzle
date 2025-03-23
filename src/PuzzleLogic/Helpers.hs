@@ -1,5 +1,5 @@
-module Helpers where
-import Types
+module PuzzleLogic.Helpers where
+import PuzzleLogic.Types
 
 
 printPath :: Path -> IO() 

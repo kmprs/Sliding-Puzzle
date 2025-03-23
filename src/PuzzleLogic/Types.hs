@@ -1,4 +1,4 @@
-module Types where
+module PuzzleLogic.Types where
 
 type Path     = [State]
 type State    = [Row]
