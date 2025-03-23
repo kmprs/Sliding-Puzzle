@@ -3,8 +3,8 @@ import qualified Data.Sequence as Seq
 import qualified Data.HashMap.Strict as HashMap
 import Data.Hashable (Hashable)
 import qualified Data.HashSet as HashSet
-
 import Debug.Trace (trace) 
+
 
 bfs :: (Eq state, Hashable state) => state -> state -> (state -> [state]) -> Maybe [state] 
 bfs start target next_states 
