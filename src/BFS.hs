@@ -93,7 +93,7 @@ addToParents parent (child:children) parents = addToParents parent children new_
  - @returns: a list of states which represents calculated path
  -}
 extractPath :: (Eq state, Hashable state) => state -> HashMap.HashMap state state -> [state]
-extractPath current parents = reverse (extractPathHelper current parents [])
+extractPath current parents = extractPathHelper current parents []
   where
     extractPathHelper :: (Eq state, Hashable state) => state -> HashMap.HashMap state state -> [state] -> [state]
     extractPathHelper c p acc =

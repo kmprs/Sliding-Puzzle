@@ -6,16 +6,23 @@ import BFS
 
 main :: IO ()
 main = do 
-    let row1 = [1, 2, 3]
-    let row2 = [4, 5, 6]
-    let row3 = [7, 0, 8]
+    let start = [[6, 7, 8],
+                 [4, 1, 2],
+                 [3, 5, 0]]
 
-    let row4 = [2, 6, 7]
-    let row5 = [3, 8, 5]
-    let row6 = [4, 1, 0]
+    let target = [[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 0]]
 
-    let start  = [row1, row2, row3] 
-    let target = [row4, row5, row6] 
+--    let start = [[1,  2,  3,  4],
+--                 [5,  6,  7,  8],
+--                 [9, 10, 11, 12],
+--                 [13, 15, 14, 0]]
+--
+--    let target = [[1,  2,  3,  4],
+--                  [5,  6,  7,  8],
+--                  [9, 10, 11, 12],
+--                  [13, 14, 15, 0]]
 
     if isSolvable start target 
         then 
