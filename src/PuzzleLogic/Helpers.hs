@@ -38,7 +38,7 @@ printRow (first:next) = putStr (show first ++ ",") >> printRow next
 
 {-|
  - @brief: checks if a given puzzle is mathematically solvable -> avoids infinite loops
- -         (see Woolsey Johnsen, 1879, doi: https://doi.org/10.2307/2369492)
+ -         (see https://de.m.wikipedia.org/wiki/15-Puzzle#Mathematischer_Hintergrund)
  - @param start: starting state
  - @param target: target state
  - @returns: True if the puzzle is solveable (else False)
