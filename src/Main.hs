@@ -1,7 +1,7 @@
 module Main where
 import PuzzleLogic.Helpers (isSolvable, printPath)
 import PuzzleLogic.PuzzleLogic (nextStates2D)
-import BFS
+import BFS (bfs) 
 
 
 main :: IO ()
