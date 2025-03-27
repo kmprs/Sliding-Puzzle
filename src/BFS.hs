@@ -1,7 +1,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 
-module BFS where
+module BFS (bfs) where
 import qualified Data.Sequence as Seq
 import qualified Data.HashMap.Strict as HashMap
 import Data.Hashable (Hashable)
@@ -46,17 +46,6 @@ bfs start target next_states
                             new_queue   = rest Seq.>< Seq.fromList new_states
                         in searchLogic final new_parents new_queue new_visited
              
-
-{-|
- - @brief: inserts a list of new states to the set of already visited ones
- - @datatype state: any datatype which can be compared and which is hashable
- - @param items: list of new possible states
- - @param set: hashset which contains the all visited states  
- - @returns: updated set of visited states
- -}
-insertToVisited :: (Eq state, Hashable state) => [state] -> HashSet.HashSet state -> HashSet.HashSet state
-insertToVisited items set = foldr HashSet.insert set items
-
 
 {-|
  - @brief: removes items from a hashset which were already marked as visited
