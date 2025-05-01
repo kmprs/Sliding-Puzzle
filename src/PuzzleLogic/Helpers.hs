@@ -1,6 +1,7 @@
 module PuzzleLogic.Helpers where
 import PuzzleLogic.Types
 import Data.Maybe (listToMaybe, fromMaybe)
+import Data.Array 
 
 
 {-|
@@ -87,3 +88,10 @@ findBlankRow grid =
         gridHeight = length grid
     in fmap (\rowIndex -> gridHeight - rowIndex) maybeRowIndex
 
+{-|
+ - @brief: Transforms a state into a list of positions (row, column), where the index
+ - in the list corresponds to the tile number.
+ - @return: A list with a position (row, column; starting at zero) for each tile number. 
+ -}
+toPosList :: State -> [Position]
+toPosList s = elems $ array (0,8) [(val, (y, x)) | (y, row) <- zip [0..] s, (x, val) <- zip [0..] row]

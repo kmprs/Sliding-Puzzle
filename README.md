@@ -12,5 +12,5 @@ Follow the steps below to install the project:
 - `cabal update && cabal install --only-dependencies`
 - `cabal build`
 
-For running the script please use the following command: `cabal run`
+For running the program please use the following command: `cabal run`
 

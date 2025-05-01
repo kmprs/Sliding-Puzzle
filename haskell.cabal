@@ -13,7 +13,8 @@ common warnings
 executable haskell
     import:           warnings
     main-is:          Main.hs
-    other-modules:    PuzzleLogic.Helpers, PuzzleLogic.Types, PuzzleLogic.PuzzleLogic, BFS    
-    build-depends:    base ^>=4.21.0.0, hashable >=1.3, containers, unordered-containers
+    other-modules:    PuzzleLogic.Helpers, PuzzleLogic.Types, PuzzleLogic.PuzzleLogic, PuzzleLogic.Heuristic, BFS    
+    build-depends:    base ^>=4.21.0.0, array >=0.5.8.0, hashable >=1.3, containers, unordered-containers
+
     hs-source-dirs:   src
     default-language: Haskell2010
