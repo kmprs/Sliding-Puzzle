@@ -2,6 +2,7 @@ module Main where
 import PuzzleLogic.Helpers (isSolvable, printPath)
 import PuzzleLogic.PuzzleLogic (nextStates2D)
 import Search.BFS (bfs) 
+import Search.AStar (astar)
 
 
 main :: IO ()
