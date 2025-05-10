@@ -3,7 +3,7 @@ import PuzzleLogic.Helpers (isSolvable, printPath, printState)
 import PuzzleLogic.PuzzleLogic (nextStates2D)
 import PuzzleLogic.Heuristic (manhattan)
 import Search.BFS (bfs) 
-import Search.AStar (astar)
+import Search.AStar (astar, astarWithWeight)
 
 
 main :: IO ()
@@ -47,8 +47,8 @@ main = do
             case bfs start4 target4 nextStates2D of
                 Nothing -> putStrLn "Couldn't find a path to the target."
                 Just path -> printPath path
-            putStrLn "Using A*:"
-            case astar start4 target4 nextStates2D manhattan of
+            putStrLn "Using A* (with a weight parameter of 2) :"
+            case astarWithWeight start4 target4 nextStates2D manhattan 2 of
                 Nothing -> putStrLn "Couldn't find a path to the target."
                 Just path -> printPath path
         else putStrLn "Configuration is not solvable."
