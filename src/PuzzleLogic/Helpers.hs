@@ -94,4 +94,5 @@ findBlankRow grid =
  - @return: A list with a position (row, column; starting at zero) for each tile number. 
  -}
 toPosList :: State -> [Position]
-toPosList s = elems $ array (0,8) [(val, (y, x)) | (y, row) <- zip [0..] s, (x, val) <- zip [0..] row]
+toPosList s = elems $ array (0,n) [(val, (y, x)) | (y, row) <- zip [0..] s, (x, val) <- zip [0..] row]
+    where n = (length $ concat s) - 1 

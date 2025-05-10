@@ -1,7 +1,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 
-module BFS (bfs) where
+module Search.BFS (bfs) where
 import qualified Data.Sequence as Seq
 import qualified Data.HashMap.Strict as HashMap
 import Data.Hashable (Hashable)
